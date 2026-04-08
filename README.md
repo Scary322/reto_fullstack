@@ -506,33 +506,33 @@ Reusing code from the internet is allowed, citing sources. The work is individua
 
 ## 🇬🇧 How to use
 1. Clone the repository
-   ```bash
+  ```bash
   git clone https://github.com/xaca/reto_fullstack.git
    ```
-2. Removes .git folder to avoid confusion with commits
+3. Removes .git folder to avoid confusion with commits
    ```bash
    rm -rf .git
    ```
-3. Initialize a new git repository
+4. Initialize a new git repository
    ```bash
    git init
    ```
-4. Add all files and make the initial commit
+5. Add all files and make the initial commit
    ```bash
    git add .
    git commit -m "Initial commit"
    ```
-5. Create a new repository on GitHub and push your local repository to GitHub
+6. Create a new repository on GitHub and push your local repository to GitHub
    ```bash
     git remote add origin
     git branch -M main
     git push -u origin main
     ```
-6. Install dependencies:
+7. Install dependencies:
    ```bash
    npm install
    ```
-7. Run the project:
+8. Run the project:
    ```bash
    npm run dev
    ```
