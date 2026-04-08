@@ -1,7 +1,7 @@
 import Title from "../components/athoms/Title";
 function Registro({title}) {
-    return (<section className="bg-red-500">
-        <Title title={title} />
-    </section>);
+    return (<div className="bg-green-500">
+        <Title title="Registro" />
+    </div>);
 }
 export default Registro;
