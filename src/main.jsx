@@ -5,7 +5,7 @@ import Registro from './registro/Registro.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    {/*<Login />*/}
-    <Registro />   
+    <Login />
+    {/*<Registro />  */} 
   </StrictMode>,
 )
