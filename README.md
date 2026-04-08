@@ -250,9 +250,9 @@ Se permite reutilizar código de internet, citando las fuentes. El trabajo es in
 
 ## 🇪🇸 Instrucciones de uso
 1. Clone el repositorio
-   ```bash
+  ```bash
   git clone https://github.com/xaca/reto_fullstack.git
-   ```
+  ```
 2. Borra la carpeta .git para evitar confusiones con los commits
    ```bash
    rm -rf .git
