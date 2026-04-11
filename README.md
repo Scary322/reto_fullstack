@@ -8,7 +8,7 @@ Reto para practicar las habilidades de un desarrollador fullstack moderno.
 ## <img src="https://flagcdn.com/w40/co.png" width="30"> Menú de contenido
 
 ### Instrucciones en Español
-- <img src="https://flagcdn.com/w40/co.png" width="20"> [Enunciado](#enunciado)
+- <img src="https://flagcdn.com/w40/co.png" width="20"> [Enunciado](#-enunciado)
 - <img src="https://flagcdn.com/w40/co.png" width="20"> [Funcionalidades](#funcionalidades)
 - <img src="https://flagcdn.com/w40/co.png" width="20"> [Tecnologías Requeridas](#tecnologías-requeridas)
 - <img src="https://flagcdn.com/w40/co.png" width="20"> [Instrucciones de uso](#instrucciones-de-uso)
