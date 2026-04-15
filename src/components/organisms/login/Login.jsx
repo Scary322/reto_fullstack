@@ -1,5 +1,38 @@
-import smile from "../assets/smile.png";
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import smile from "../../../assets/smile.png";
+import MOCK_USERS from "../../../mockdata/mock_users"
+
 const Login = () => {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
+  const [error, setError] = useState('');
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setError('');
+
+    // Obtener usuarios registrados
+    const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+    const allUsers = [...MOCK_USERS, ...registeredUsers];
+
+    // Buscar usuario
+    const user = allUsers.find(u => u.email === formData.email && u.password === formData.password);
+    if (user) {
+      // Login exitoso
+      localStorage.setItem('loggedInUser', JSON.stringify(user));
+      navigate('/gallery');
+    } else {
+      setError('Credenciales incorrectas.');
+    }
+  };
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-50 p-6">
       <div className="w-full max-w-md bg-white p-10 rounded-3xl shadow-sm border border-gray-100">
@@ -14,17 +47,27 @@ const Login = () => {
           <p className="text-slate-400 text-lg">Sign in to your account</p>
         </div>
 
-        <form className="space-y-10">
+        {error && (
+          <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+            {error}
+          </div>
+        )}
+
+        <form className="space-y-10" onSubmit={handleSubmit}>
           
-          {/* Input de Nombre */}
+          {/* Input de Email */}
           <div className="relative group">
             <label className="block text-slate-400 text-lg mb-1 group-focus-within:text-blue-500 transition-colors">
-              Name
+              Email
             </label>
             <div className="relative border-b border-gray-200 group-focus-within:border-blue-500 transition-all">
               <input
-                type="text"
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
                 className="w-full py-2 bg-transparent focus:outline-none text-slate-700 pr-10"
+                required
               />
               <span className="absolute right-0 top-2 text-slate-300">
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -42,7 +85,11 @@ const Login = () => {
             <div className="relative border-b border-gray-200 group-focus-within:border-blue-500 transition-all">
               <input
                 type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
                 className="w-full py-2 bg-transparent focus:outline-none text-slate-700 pr-10"
+                required
               />
               <span className="absolute right-0 top-2 text-slate-300 cursor-pointer hover:text-blue-500 transition-colors">
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">

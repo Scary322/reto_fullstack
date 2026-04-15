@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import MOCK_USERS from "../../../mockdata/mock_users"
 
 const Register = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -9,6 +12,7 @@ const Register = () => {
     password: '',
     confirmPassword: ''
   });
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -16,6 +20,39 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setError('');
+
+    // Validar contraseñas coinciden
+    if (formData.password !== formData.confirmPassword) {
+      setError('Las contraseñas no coinciden.');
+      return;
+    }
+
+    // Validar email único
+    const existingUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+    const allUsers = [...MOCK_USERS, ...existingUsers];
+    const emailExists = allUsers.some(user => user.email === formData.email);
+    if (emailExists) {
+      setError('El email ya está registrado.');
+      return;
+    }
+
+    // Crear nuevo usuario
+    const newUser = {
+      id: Date.now(), // ID único basado en timestamp
+      name: formData.name,
+      email: formData.email,
+      cellphone: formData.cellphone,
+      address: formData.address,
+      password: formData.password
+    };
+
+    // Guardar en localStorage
+    existingUsers.push(newUser);
+    localStorage.setItem('registeredUsers', JSON.stringify(existingUsers));
+
+    // Navegar a login
+    navigate('/login');
   };
 
   return (
@@ -28,6 +65,12 @@ const Register = () => {
             <h2 className="text-3xl font-bold text-gray-900 tracking-tight">Crear cuenta</h2>
             <p className="text-gray-500 text-sm mt-1">Únete a nuestra comunidad hoy mismo</p>
           </header>
+
+          {error && (
+            <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+              {error}
+            </div>
+          )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
@@ -121,7 +164,7 @@ const Register = () => {
               </button>
 
               <p className="text-center text-sm text-gray-500">
-                ¿Ya tienes una cuenta? <a href="#" className="text-indigo-600 font-semibold hover:underline">Inicia sesión</a>
+                ¿Ya tienes una cuenta? <Link to="/login" className="text-indigo-600 font-semibold hover:underline">Inicia sesión</Link>
               </p>
             </div>
           </form>
@@ -131,4 +174,4 @@ const Register = () => {
   );
 };
 
-export default Registro;
+export default Register;
