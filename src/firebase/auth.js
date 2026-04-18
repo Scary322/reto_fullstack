@@ -1,9 +1,24 @@
 import app from "./firebase.config.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 import { doc, setDoc, getFirestore } from "firebase/firestore";
 
 const auth = getAuth(app);
 const db = getFirestore(app);
+
+// Wrappers para la UI: ocultan la dependencia de 'firebase/auth' a los componentes
+export const subscribeToAuthChanges = (callback) => {
+    return onAuthStateChanged(auth, callback);
+};
+
+export const logoutUser = async () => {
+    try {
+        await signOut(auth);
+        return { success: true };
+    } catch (error) {
+        console.error("Error signing out:", error);
+        return { success: false, error: error.code };
+    }
+};
 
 export const registerFullUser = async (userData) => {
     try {

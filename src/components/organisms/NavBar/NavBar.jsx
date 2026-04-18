@@ -1,23 +1,34 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { subscribeToAuthChanges } from '../../../firebase/auth';
 
 export default function NavBar() {
   const location = useLocation();
-  const navigate = useNavigate();
   const [loggedInUser, setLoggedInUser] = useState(null);
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('loggedInUser') || 'null');
-    setLoggedInUser(user);
+    /*
+      // BACKUP: OLD LOCALSTORAGE METHOD
+      // const user = JSON.parse(localStorage.getItem('loggedInUser') || 'null');
+      // setLoggedInUser(user);
+    */
+    const unsubscribe = subscribeToAuthChanges((currentUser) => {
+      setLoggedInUser(currentUser);
+    });
+
+    return () => unsubscribe();
   }, []);
 
   const isActive = (path) => location.pathname === path;
 
-  const handleLogout = () => {
-    localStorage.removeItem('loggedInUser');
-    setLoggedInUser(null);
-    navigate('/login');
-  };
+  /*
+    // BACKUP: OLD LOCALSTORAGE METHOD
+    // const handleLogout = () => {
+    //   localStorage.removeItem('loggedInUser');
+    //   setLoggedInUser(null);
+    //   navigate('/login');
+    // };
+  */
 
   return (
     <nav className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
@@ -49,12 +60,16 @@ export default function NavBar() {
             </li>
             {loggedInUser ? (
               <li>
-                <button
-                  onClick={handleLogout}
-                  className="text-base font-medium transition-all duration-300 pb-2 border-b-2 text-gray-600 border-transparent hover:text-gray-900 hover:border-gray-300"
+                <Link
+                  to="/profile"
+                  className={`text-base font-medium transition-all duration-300 pb-2 border-b-2 ${
+                    isActive('/profile')
+                      ? 'text-blue-600 border-blue-600'
+                      : 'text-gray-600 border-transparent hover:text-gray-900 hover:border-gray-300'
+                  }`}
                 >
-                  Logout
-                </button>
+                  Profile
+                </Link>
               </li>
             ) : (
               <>
