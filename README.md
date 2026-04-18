@@ -280,6 +280,12 @@ Se permite reutilizar código de internet, citando las fuentes. El trabajo es in
    ```bash
    npm run dev
    ```
+8. Inicializar Base de Datos (Seeder)
+   - Un **Seeder** es un script automático que "siembra" o llena una base de datos vacía con información útil para que la aplicación sea funcional desde el inicio, ideal para arrancar este reto con datos de prueba pre-cargados. 
+   - Ejecuta el siguiente comando para registrar automáticamente los productos de prueba en Firestore (asegura tener tus credenciales en firebase.config.js):
+   ```bash
+   npm run seed
+   ```
 
 ---
 
@@ -607,6 +613,12 @@ Reusing code from the internet is allowed, citing sources. The work is individua
 3. Run the project:
    ```bash
    npm run dev
+   ```
+4. Initialize Database (Seeder)
+   - A **Seeder** is an automated script that populates the database with initial dummy data. This makes your application instantly testable after cloning.
+   - Run the following command to push mock products into your Firestore (ensure you have your configuration inside firebase.config.js):
+   ```bash
+   npm run seed
    ```
 
 ---
