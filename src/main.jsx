@@ -7,6 +7,7 @@ import Gallery from "./components/organisms/gallery/Gallery"
 import Login from "./components/organisms/login/Login"
 import Register from "./components/organisms/register/Register"
 import Profile from "./components/organisms/profile/Profile"
+import ProductDetail from "./components/organisms/productDetail/ProductDetail"
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -18,6 +19,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="product/:id" element={<ProductDetail />} />
         </Route>
       </Routes>
     </BrowserRouter>
