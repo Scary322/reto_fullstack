@@ -1,11 +1,27 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import Login from './login/Login.jsx';
-import Registro from './registro/Registro.jsx';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import "./components/molecules/ProductCard"
+import Layout from "./components/templates/Layout"
+import Gallery from "./components/organisms/gallery/Gallery"
+import Login from "./components/organisms/login/Login"
+import Register from "./components/organisms/register/Register"
+import Profile from "./components/organisms/profile/Profile"
+import ProductDetail from "./components/organisms/productDetail/ProductDetail"
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Login />
-    {/*<Registro />  */} 
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Navigate to="/gallery" replace />} />
+          <Route path="gallery" element={<Gallery />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="product/:id" element={<ProductDetail />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   </StrictMode>,
 )

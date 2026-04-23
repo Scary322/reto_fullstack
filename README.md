@@ -8,26 +8,26 @@ Reto para practicar las habilidades de un desarrollador fullstack moderno.
 ## <img src="https://flagcdn.com/w40/co.png" width="30"> Menú de contenido
 
 ### Instrucciones en Español
-- <img src="https://flagcdn.com/w40/co.png" width="20"> [Enunciado](#-enunciado)
-- <img src="https://flagcdn.com/w40/co.png" width="20"> [Funcionalidades](#-funcionalidades)
-- <img src="https://flagcdn.com/w40/co.png" width="20"> [Tecnologías Requeridas](#-tecnologías-requeridas)
-- <img src="https://flagcdn.com/w40/co.png" width="20"> [Instrucciones de uso](#-instrucciones-de-uso)
-- <img src="https://flagcdn.com/w40/co.png" width="20"> [Instrucciones Paso a Paso](#-instrucciones-paso-a-paso)
-- <img src="https://flagcdn.com/w40/co.png" width="20"> [Tips Importantes](#-tips-importantes)
-- <img src="https://flagcdn.com/w40/co.png" width="20"> [Información de Interés](#-información-de-interés)
+- [Enunciado](#es-enunciado)
+- [Funcionalidades](#es-funcionalidades)
+- [Tecnologías Requeridas](#es-tecnologías-requeridas)
+- [Instrucciones Paso a Paso](#es-instrucciones-paso-a-paso)
+- [Tips Importantes](#es-tips-importantes)
+- [Información de Interés](#es-información-de-interés)
+- [Instrucciones de uso](#es-instrucciones-de-uso)
 
 ### English Menu of Contents
-- <img src="https://flagcdn.com/w40/us.png" width="20"> [Statement](#-statement)
-- <img src="https://flagcdn.com/w40/us.png" width="20"> [Features](#-features)
-- <img src="https://flagcdn.com/w40/us.png" width="20"> [Required Technologies](#-required-technologies)
-- <img src="https://flagcdn.com/w40/us.png" width="20"> [How to use](#-how-to-use)
-- <img src="https://flagcdn.com/w40/us.png" width="20"> [Step by Step Instructions](#-step-by-step-instructions)
-- <img src="https://flagcdn.com/w40/us.png" width="20"> [Important Tips](#-important-tips)
-- <img src="https://flagcdn.com/w40/us.png" width="20"> [Resources](#-resources)
+- [Statement](#en-statement)
+- [Features](#en-features)
+- [Required Technologies](#en-required-technologies)
+- [Step by Step Instructions](#en-step-by-step-instructions)
+- [Important Tips](#en-important-tips)
+- [Resources](#en-resources)
+- [How to use](#en-how-to-use)
 
 ---
 
-## <img src="https://flagcdn.com/w40/co.png" width="30"> Enunciado
+## 🇪🇸 Enunciado
 
 Desarrollar una aplicación web fullstack para una tienda online que consuma una API REST. La aplicación debe incluir las siguientes funcionalidades:
 
@@ -286,8 +286,48 @@ Se permite reutilizar código de internet, citando las fuentes. El trabajo es in
 
 ---
 
+## 🇪🇸 Instrucciones de uso
+1. Clone el repositorio
+  ```bash
+  git clone https://github.com/xaca/reto_fullstack.git
+  ```
+2. Borra la carpeta .git para evitar confusiones con los commits
+   ```bash
+   rm -rf .git
+   ```
+3. Inicializa un nuevo repositorio git
+   ```bash
+   git init
+   ```
+4. Agrega todos los archivos y haz el commit inicial
+   ```bash
+   git add .
+   git commit -m "Initial commit"
+   ```
+5. Crea un nuevo repositorio en GitHub y sube tu repositorio local a GitHub
+   ```bash
+    git remote add origin
+    git branch -M main
+    git push -u origin main
+    ```
+6. Instala las dependencias:
+   ```bash
+   npm install
+   ```
+7. Ejecuta el proyecto:
+   ```bash
+   npm run dev
+   ```
+8. Inicializar Base de Datos (Seeder)
+   - Un **Seeder** es un script automático que "siembra" o llena una base de datos vacía con información útil para que la aplicación sea funcional desde el inicio, ideal para arrancar este reto con datos de prueba pre-cargados. 
+   - Ejecuta el siguiente comando para registrar automáticamente los productos de prueba en Firestore (asegura tener tus credenciales en firebase.config.js):
+   ```bash
+   npm run seed
+   ```
 
-## <img src="https://flagcdn.com/w40/us.png" width="30"> Statement
+---
+
+## 🇬🇧 Statement
 
 Develop a fullstack web application for an online store that consumes a REST API. The application must include the following functionalities:
 
@@ -547,5 +587,150 @@ Reusing code from the internet is allowed, citing sources. The work is individua
 - **Firebase (Bonus)**: https://firebase.google.com/docs
 - **Atomic Design**: https://bradfrost.com/blog/post/atomic-web-design/
 - **Responsive Design**: https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design
+- **Axios (HTTP client)**: https://axios-http.com/
+- **Vite (Build tool)**: https://vitejs.dev/
+
+---
+
+## 🇬🇧 How to use
+1. Clone the repository
+  ```bash
+  git clone https://github.com/xaca/reto_fullstack.git
+   ```
+3. Removes .git folder to avoid confusion with commits
+   ```bash
+   rm -rf .git
+   ```
+4. Initialize a new git repository
+   ```bash
+   git init
+   ```
+5. Add all files and make the initial commit
+   ```bash
+   git add .
+   git commit -m "Initial commit"
+   ```
+6. Create a new repository on GitHub and push your local repository to GitHub
+   ```bash
+    git remote add origin
+    git branch -M main
+    git push -u origin main
+    ```
+7. Install dependencies:
+   ```bash
+   npm install
+   ```
+8. Run the project:
+   ```bash
+   npm run dev
+   ```
+
+- Product gallery loaded dynamically
+- Product pagination
+- Product search
+- Shopping cart
+- Checkout preview
+
+---
+
+## 🇬🇧 Features
+- ✅ User registration and persistent session
+- ✅ Dynamic product gallery
+- ✅ Real-time search
+- ✅ Product pagination
+- ✅ Shopping cart with quantity control
+- ✅ Checkout preview page
+
+---
+
+## 🇬🇧 Technologies
+- React
+- Tailwind CSS
+- Zustand
+- Axios
+- Vite
+
+---
+
+## 🇬🇧 Work Plan
+1. **Project setup**
+   - Create React project with Vite
+   - Configure Tailwind CSS
+2. **Mock data**
+   - Add products, users and categories
+3. **Component structure**
+   - Atoms, molecules, organisms, templates
+4. **State management**
+   - Zustand for products, cart and auth
+5. **Product gallery**
+   - Display products dynamically
+6. **Shopping cart**
+   - Add, remove and update item quantities
+7. **Search**
+   - Filter products while typing
+8. **Pagination**
+   - Add product page navigation
+9. **User registration and session**
+   - Persist user with localStorage
+10. **Checkout**
+    - Order summary and confirmation
+11. **Responsive design**
+    - Mobile, tablet, and desktop layout
+12. **Real API (optional)**
+    - Use `https://fakestoreapi.com/`
+13. **Bonus**
+    - Firebase Authentication / Firestore
+
+---
+
+## 🇬🇧 How to use
+1. Clone the repository
+   ```bash
+   git clone https://github.com/xaca/reto_fullstack.git
+    ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run the project:
+   ```bash
+   npm run dev
+   ```
+4. Initialize Database (Seeder)
+   - A **Seeder** is an automated script that populates the database with initial dummy data. This makes your application instantly testable after cloning.
+   - Run the following command to push mock products into your Firestore (ensure you have your configuration inside firebase.config.js):
+   ```bash
+   npm run seed
+   ```
+
+---
+
+## Recursos
+- `https://fakestoreapi.com/`
+- `https://react.dev/`
+- `https://tailwindcss.com/`
+- `https://zustand.docs.pmnd.rs/`
+- `https://axios-http.com/`
+
+---
+
+## Tips Importantes
+
+✅ **Comienza con mockdata**: Así estableces la estructura y lógica sin depender de la API.
+✅ **Usa Zustand**: Simplifica la gestión de estado comparado con Context API.
+✅ **Commits frecuentes**: Cada paso pequeño merecería su commit (mínimo 30 commits).
+✅ **Testing visual**: Prueba en diferentes tamaños de pantalla mientras desarrollas.
+✅ **Firebase es bonus**: Enfócate primero en que todo funcione con localStorage.
+
+## Información de Interés
+- **Videos de React**: [Lista de reproducción de la clase](https://www.youtube.com/watch?v=YEe_VLjWAeY&list=PLQ1ShaTNqthJHS5mDcxoR1Z68ljLDYm-A)
+- **Documentación de React**: https://react.dev/
+- **Tailwind CSS**: https://tailwindcss.com/
+- **Zustand (State Management)**: https://zustand.docs.pmnd.rs/
+- **Plantillas de Referencia**: https://themewagon.com/
+- **FakeStore API**: https://fakestoreapi.com/ (API perfecta para ecommerce)
+- **Firebase (Bonus)**: https://firebase.google.com/docs
+- **Atomic Design**: https://bradfrost.com/blog/post/atomic-web-design/
+- **Diseño Responsivo**: https://developer.mozilla.org/es/docs/Learn/CSS/CSS_layout/Responsive_Design
 - **Axios (HTTP client)**: https://axios-http.com/
 - **Vite (Build tool)**: https://vitejs.dev/
