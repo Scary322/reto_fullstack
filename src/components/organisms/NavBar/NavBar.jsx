@@ -1,10 +1,13 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { subscribeToAuthChanges } from '../../../firebase/auth';
+import useCartStore from '../../../store/cartStore';
 
 export default function NavBar() {
   const location = useLocation();
   const [loggedInUser, setLoggedInUser] = useState(null);
+  const { getTotalItems } = useCartStore();
+  const totalItems = getTotalItems();
 
   useEffect(() => {
     /*
@@ -35,8 +38,8 @@ export default function NavBar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="flex items-center space-x-2 text-2xl font-bold hover:opacity-80 transition-opacity"
           >
             <span className="bg-gradient-to-r from-purple-500 via-purple-600 to-pink-500 bg-clip-text text-transparent">
@@ -56,6 +59,23 @@ export default function NavBar() {
                 }`}
               >
                 Gallery
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/cart"
+                className={`relative text-base font-medium transition-all duration-300 pb-2 border-b-2 ${
+                  isActive('/cart')
+                    ? 'text-blue-600 border-blue-600'
+                    : 'text-gray-600 border-transparent hover:text-gray-900 hover:border-gray-300'
+                }`}
+              >
+                Carrito
+                {totalItems > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                    {totalItems}
+                  </span>
+                )}
               </Link>
             </li>
             {loggedInUser ? (
