@@ -2,26 +2,12 @@ import { useState, useEffect } from "react";
 import ProductCard from "../../molecules/ProductCard";
 import { getProducts } from "../../../firebase/products";
 
-/* REFERENCIA: lógica original con mockdata
-import MOCK_PRODUCTS from "../../../mockdata/mock_products";
-export function GalleryMock() {
-    return (
-        <section className="p-6">
-            <h2 className="text-2xl font-bold mb-6">Nuestros Productos</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
-                {MOCK_PRODUCTS.map((producto) => (
-                    <ProductCard key={producto.id} product={producto} />
-                ))}
-            </div>
-        </section>
-    );
-}
-*/
-
 export default function Gallery() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState("");
+    const [page, setPage] = useState(1);
+    const itemsPerPage = 2;
 
     useEffect(() => {
         getProducts().then((data) => {
@@ -40,9 +26,11 @@ export default function Gallery() {
         );
     }
 
-    const filteredProducts = products.filter((product) =>
-    product.title.toLowerCase().includes(search.toLowerCase())
+    const filtered = products.filter((product) =>
+        product.title.toLowerCase().includes(search.toLowerCase())
     );
+    const totalPages = Math.ceil(filtered.length / itemsPerPage);
+    const paginatedProducts = filtered.slice((page - 1) * itemsPerPage, page * itemsPerPage);
     
     return (
     <section className="p-6">
@@ -61,10 +49,23 @@ export default function Gallery() {
 
         {/* Grid Layout Responsivo */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
-            {filteredProducts.map((producto) => (
+            {paginatedProducts.map((producto) => (
                 <ProductCard key={producto.id} product={producto} />
             ))}
         </div>
+
+        {/* Paginación */}
+        {totalPages > 1 && (
+            <div className="flex justify-center gap-4 mt-8">
+                <button onClick={() => setPage(p => Math.max(p - 1, 1))} disabled={page === 1} className="px-4 py-2 border rounded disabled:opacity-50">
+                    ← Anterior
+                </button>
+                <span className="px-4 py-2">Página {page} de {totalPages}</span>
+                <button onClick={() => setPage(p => Math.min(p + 1, totalPages))} disabled={page === totalPages} className="px-4 py-2 border rounded disabled:opacity-50">
+                    Siguiente →
+                </button>
+            </div>
+        )}
     </section>
     );
     
