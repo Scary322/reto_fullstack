@@ -1,30 +1,22 @@
-import app from "./firebase.config.js";
-import { getFirestore, collection, getDocs, doc, getDoc } from "firebase/firestore";
-
-const db = getFirestore(app);
+import MOCK_PRODUCTS from "../mockdata/products.js";
 
 export const getProducts = async () => {
     try {
-        const querySnapshot = await getDocs(collection(db, "products"));
-        const products = querySnapshot.docs.map(doc => ({
-            id: doc.id,
-            ...doc.data()
-        }));
-        return products.sort((a, b) => Number(a.id) - Number(b.id));
+        // Simula una demora de red
+        await new Promise(resolve => setTimeout(resolve, 300));
+        return MOCK_PRODUCTS.sort((a, b) => Number(a.id) - Number(b.id));
     } catch (error) {
-        console.error("Error fetching products from Firestore:", error);
+        console.error("Error fetching products:", error);
         return [];
     }
 };
 
 export const getProductById = async (id) => {
     try {
-        const docRef = doc(db, "products", String(id));
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-            return { id: docSnap.id, ...docSnap.data() };
-        }
-        return null;
+        // Simula una demora de red
+        await new Promise(resolve => setTimeout(resolve, 300));
+        const product = MOCK_PRODUCTS.find(p => p.id === Number(id));
+        return product || null;
     } catch (error) {
         console.error("Error fetching product by id:", error);
         return null;
