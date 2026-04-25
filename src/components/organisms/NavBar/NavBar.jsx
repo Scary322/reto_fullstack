@@ -6,7 +6,7 @@ import useCartStore from '../../../store/cartStore';
 export default function NavBar() {
   const location = useLocation();
   const [loggedInUser, setLoggedInUser] = useState(null);
-  const { getTotalItems } = useCartStore();
+  const { getTotalItems, setUser } = useCartStore();
   const totalItems = getTotalItems();
 
   useEffect(() => {
@@ -17,10 +17,12 @@ export default function NavBar() {
     */
     const unsubscribe = subscribeToAuthChanges((currentUser) => {
       setLoggedInUser(currentUser);
+      // Actualizar el carrito para el usuario actual
+      setUser(currentUser?.id || null);
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [setUser]);
 
   const isActive = (path) => location.pathname === path;
 
