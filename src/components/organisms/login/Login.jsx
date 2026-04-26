@@ -52,8 +52,8 @@ const Login = () => {
             {/* Icono similar al de la imagen */}
             <img src={smile} alt="Smile Icon" className="w-[64px] h-[64px]" />
           </div>
-          <h1 className="text-4xl font-bold text-slate-100 mb-2">Welcome!</h1>
-          <p className="text-slate-300 text-lg">Sign in to your account</p>
+          <h1 className="text-4xl font-bold text-slate-100 mb-2">Bienvenido</h1>
+          <p className="text-slate-300 text-lg">Inicia sesión</p>
         </div>
 
         {error && (
@@ -89,7 +89,7 @@ const Login = () => {
           {/* Input de Password */}
           <div className="relative group">
             <label className="block text-secondary text-lg mb-1 group-focus-within:text-[var(--color-brand-blue)] transition-colors">
-              Password
+              Contraseña
             </label>
             <div className="relative border-b border-[var(--color-brand-blue)] group-focus-within:border-[var(--color-brand-blue)] transition-all">
               <input
@@ -115,10 +115,10 @@ const Login = () => {
                 type="checkbox"
                 className="w-5 h-5 border-[var(--color-brand-blue)] rounded focus:ring-[var(--color-brand-blue)] transition-all"
               />
-              <span className="text-lg">¿recordar en este dispositivo?</span>
+              <span className="text-lg">¿Recordar dispositivo?</span>
             </label>
             <a href="#" className="text-[var(--color-brand-blue)] hover:text-[var(--color-accent)] transition-colors text-lg">
-              forgot password?
+              ¿Olvidaste tu contraseña?
             </a>
           </div>
 
@@ -127,7 +127,7 @@ const Login = () => {
             type="submit"
             className="btn-dna w-3/5 hover:bg-[var(--color-accent)] text-white font-bold rounded-xl flex items-center justify-center space-x-3 transition-all shadow-lg shadow-[var(--color-brand-blue)]/35 active:scale-95"
           >
-            <span className="text-xl">Login</span>
+            <span className="text-xl">Inicar sesión</span>
             <svg
               className="w-6 h-6"
               fill="none"
