@@ -3,7 +3,7 @@ import NavBar from '../organisms/NavBar/NavBar';
 
 export default function Layout() {
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="bg-slate-900 text-slate-100 min-h-screen flex flex-col">
       <NavBar />
       <main className="flex-1 w-full">
         <Outlet />
