@@ -89,9 +89,12 @@ export default function Cart() {
                 {totalItems} {totalItems === 1 ? 'producto' : 'productos'}
               </p>
             </div>
-            <button className="px-8 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition-colors">
+            <Link
+              to="/checkout"
+              className="inline-flex items-center justify-center px-8 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition-colors"
+            >
               Proceder al Pago
-            </button>
+            </Link>
           </div>
         </div>
       </div>

@@ -56,6 +56,8 @@ export default function Profile() {
     );
   }
 
+  const displayName = user.name || user.email?.split('@')[0] || 'User';
+
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="bg-white shadow-lg rounded-2xl overflow-hidden">
@@ -66,14 +68,14 @@ export default function Profile() {
           {/* Avatar */}
           <div className="w-24 h-24 rounded-full bg-white p-1 shadow-md">
             <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-100 to-gray-300 flex items-center justify-center text-3xl font-bold text-gray-500">
-              {user.displayName ? user.displayName.charAt(0).toUpperCase() : user.email?.charAt(0).toUpperCase() || 'U'}
+              {displayName.charAt(0).toUpperCase()}
             </div>
           </div>
           
           {/* User Info */}
           <div className="mt-4 sm:mt-14 sm:ml-6 text-center sm:text-left flex-1">
             <h1 className="text-2xl font-bold text-gray-900">
-              {user.displayName || 'Set your display name'}
+              {displayName}
             </h1>
             <p className="text-sm text-gray-500 mt-1">{user.email}</p>
           </div>
@@ -95,7 +97,7 @@ export default function Profile() {
           <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-6">
             <div className="sm:col-span-1">
               <dt className="text-sm font-medium text-gray-500">User ID</dt>
-              <dd className="mt-1 text-sm text-gray-900 break-all">{user.uid}</dd>
+              <dd className="mt-1 text-sm text-gray-900 break-all">{user.id}</dd>
             </div>
             <div className="sm:col-span-1">
               <dt className="text-sm font-medium text-gray-500">Account status</dt>
@@ -104,7 +106,7 @@ export default function Profile() {
             {/* Add more info later if available connected logic */}
             <div className="sm:col-span-2">
                <dt className="text-sm font-medium text-gray-500">Email Verified</dt>
-               <dd className="mt-1 text-sm text-gray-900">{user.emailVerified ? 'Yes' : 'No'}</dd>
+               <dd className="mt-1 text-sm text-gray-900">No</dd>
             </div>
           </dl>
         </div>

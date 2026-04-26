@@ -2,6 +2,7 @@ import MOCK_USERS from "../mockdata/users.js";
 
 // Simulación de usuario autenticado en localStorage
 let currentUser = null;
+const authSubscribers = [];
 
 // Verificar si hay usuario guardado al cargar el módulo
 const savedUser = localStorage.getItem("currentUser");
@@ -9,19 +10,26 @@ if (savedUser) {
     currentUser = JSON.parse(savedUser);
 }
 
+const notifyAuthChange = () => {
+    authSubscribers.forEach((callback) => callback(currentUser));
+};
+
 // Wrappers para la UI: manejan la autenticación con mockdata
 export const subscribeToAuthChanges = (callback) => {
-    // Simula cambios de autenticación
     callback(currentUser);
-    
-    // Retorna una función para "desuscribirse"
-    return () => {};
+    authSubscribers.push(callback);
+
+    return () => {
+        const index = authSubscribers.indexOf(callback);
+        if (index !== -1) authSubscribers.splice(index, 1);
+    };
 };
 
 export const logoutUser = async () => {
     try {
         currentUser = null;
         localStorage.removeItem("currentUser");
+        notifyAuthChange();
         return { success: true };
     } catch (error) {
         console.error("Error logging out:", error);
@@ -56,6 +64,7 @@ export const registerFullUser = async (userData) => {
         // Establecer como usuario actual
         currentUser = { id: newUser.id, email: newUser.email, name: newUser.name };
         localStorage.setItem("currentUser", JSON.stringify(currentUser));
+        notifyAuthChange();
 
         return { success: true, user: currentUser };
     } catch (error) {
@@ -78,6 +87,7 @@ export const loginUser = async (email, password) => {
         // Establecer como usuario actual
         currentUser = { id: user.id, email: user.email, name: user.name };
         localStorage.setItem("currentUser", JSON.stringify(currentUser));
+        notifyAuthChange();
 
         return { success: true, user: currentUser };
     } catch (error) {
