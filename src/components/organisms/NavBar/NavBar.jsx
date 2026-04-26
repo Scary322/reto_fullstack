@@ -60,7 +60,7 @@ export default function NavBar() {
                     : 'text-slate-300 border-transparent hover:text-slate-100 hover:border-[var(--color-brand-blue)]'
                 }`}
               >
-                Gallery
+                Galeria
               </Link>
             </li>
             <li>
@@ -90,7 +90,7 @@ export default function NavBar() {
                       : 'text-slate-300 border-transparent hover:text-slate-100 hover:border-[var(--color-brand-blue)]'
                   }`}
                 >
-                  Profile
+                  Perfil
                 </Link>
               </li>
             ) : (
@@ -104,7 +104,7 @@ export default function NavBar() {
                         : 'text-slate-300 border-transparent hover:text-slate-100 hover:border-[var(--color-brand-blue)]'
                     }`}
                   >
-                    Login
+                    Iniciar sesión
                   </Link>
                 </li>
                 <li>
@@ -116,7 +116,7 @@ export default function NavBar() {
                         : 'text-slate-300 border-transparent hover:text-slate-100 hover:border-[var(--color-brand-blue)]'
                     }`}
                   >
-                    Register
+                    Registrarse
                   </Link>
                 </li>
               </>
