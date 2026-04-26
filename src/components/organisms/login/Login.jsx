@@ -115,7 +115,7 @@ const Login = () => {
                 type="checkbox"
                 className="w-5 h-5 border-[var(--color-brand-blue)] rounded focus:ring-[var(--color-brand-blue)] transition-all"
               />
-              <span className="text-lg">remember me?</span>
+              <span className="text-lg">¿recordar en este dispositivo?</span>
             </label>
             <a href="#" className="text-[var(--color-brand-blue)] hover:text-[var(--color-accent)] transition-colors text-lg">
               forgot password?
